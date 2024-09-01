@@ -17,7 +17,10 @@ def crear_paquete_icmp(caracter, seq_number, timestamp):
     ts_le = struct.pack('<I', int(timestamp.timestamp()))
 
     # Crear el payload del paquete ICMP, incluyendo el timestamp
-    data = ts_le + b'\x00\x00\x00\x00' + bytes(caracter, 'utf-8').ljust(48, b'\x00')
+    payload_fijo = bytes.fromhex("f681050000000000101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f3031323334353637")
+    
+    # Agregar el caracter del mensaje al inicio del payload
+    data = ts_le + b'\x00\x00\x00\x00' + bytes(caracter, 'utf-8') + payload_fijo[1:]
 
     # Crear el paquete completo
     paquete = ip / icmp / Raw(load=data)
@@ -40,7 +43,7 @@ def enviar_paquetes_icmp(mensaje):
         
         print(f"Sent 1 packet with character '{caracter}'.")
         # Esperar un poco para no saturar la red
-        time.sleep(0.5)
+        time.sleep(0.1)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
