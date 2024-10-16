@@ -1,0 +1,26 @@
+{
+	"username": "nasustactico",
+	"password": "",
+	"passwordconfirm": "",
+	"email": "lexislema10@gmail.com",
+	"emailconfirm": "lexislema10@gmail.com",
+	"humanverify[hash]": "fee86851073e66849dfb32fe6ecb01c8",
+	"g-recaptcha-response": "",
+	"user1014294884": "",
+	"referrername": "",
+	"timezoneoffset": "0",
+	"dst": "2",
+	"agree": "1",
+	"s": "",
+	"securitytoken": "guest",
+	"do": "addmember",
+	"url": "https://www.mmo-champion.com/content/",
+	"password_md5": "0abac9bf26527485e80f7567d6b1a235",
+	"passwordconfirm_md5": "0abac9bf26527485e80f7567d6b1a235",
+	"day": "",
+	"month": "",
+	"year": ""
+}
+
+
+
