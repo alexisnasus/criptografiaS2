@@ -1,0 +1,13 @@
+FROM ubuntu:22.10
+
+RUN sed -i 's|http://archive.ubuntu.com/ubuntu|http://old-releases.ubuntu.com/ubuntu|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.ubuntu.com/ubuntu|http://old-releases.ubuntu.com/ubuntu|g' /etc/apt/sources.list && \
+    apt-get update && apt-get install -y openssh-client openssh-server \
+    && useradd -m -s /bin/bash prueba \
+    && echo "prueba:prueba" | chpasswd
+
+RUN [ ! -d /var/run/sshd ] || mkdir -p /var/run/sshd
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd", "-D"]

@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  c1:
+    build:
+      context: .
+      dockerfile: Dockerfile-C1
+    container_name: C1
+    networks:
+      - ssh-network
+    command: tail -f /dev/null
+
+  c2:
+    build:
+      context: .
+      dockerfile: Dockerfile-C2
+    container_name: C2
+    networks:
+      - ssh-network
+    command: tail -f /dev/null
+
+  c3:
+    build:
+      context: .
+      dockerfile: Dockerfile-C3
+    container_name: C3
+    networks:
+      - ssh-network
+    command: tail -f /dev/null
+
+
+  c4:
+    build:
+      context: .
+      dockerfile: Dockerfile-C4
+    container_name: C4
+    networks:
+      - ssh-network
+
+  s1:
+    build:
+      context: .
+      dockerfile: Dockerfile-C4
+    container_name: S1
+    hostname: S1
+    networks:
+      - ssh-network
+
+networks:
+  ssh-network:
+    driver: bridge
